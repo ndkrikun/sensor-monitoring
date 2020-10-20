@@ -9,7 +9,7 @@ const routes: Routes = [
 		component: BoxesTableComponent
 	},
 	{
-		path: 'boxes/:key/sensors',
+		path: 'boxes/:id/sensors',
 		component: BoxSensorsTableComponent
 	},
 	{

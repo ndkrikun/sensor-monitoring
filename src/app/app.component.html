@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<ng-template [ngIf]="(sensorReadings$ | async).length === 0" [ngIfElse]="isLoaded">
+    <div class="spinner-container">
+        <mat-spinner [diameter]="50" class="mat-spinner-color"></mat-spinner>
+    </div>
+</ng-template>
+
+<ng-template #isLoaded>
+    <router-outlet></router-outlet>
+</ng-template>
