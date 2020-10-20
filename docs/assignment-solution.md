@@ -59,11 +59,46 @@ You will need Angular CLI version `Angular CLI: v10.1.7` and `Node: v12.16.3` to
 
 ## Functionality overview
 
-### Main page
+### The main page `/boxes`
 
-The main page `/boxes` displays all of the boxes deployed on the field. You can observe their unique ids and the number of available readings for each box.
+The main page displays all of the boxes deployed on the field. You can observe their unique ids and the number of available readings for each box.
+
+![Boxes list](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/boxes-list.png?raw=true)
 
 From here you can you can navigate either to readings table `/boxes/{boxId}/readings` or sensors table `/boxes/{boxId}/sensors` available for each box.
 
 Also you can click on the button and observe all boxes locations on the map:
 
+![Boxes map](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/boxes-map.png?raw=true)
+
+### Box's readings `/boxes/{boxId}/readings`
+
+This page displays all readings made by all sensors for the particular box.
+
+![Box all readings](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/box-all-readings.png?raw=true)
+
+You can filter this data by sensor type using the selection component at the top of the page:
+
+![Filter by sensor type](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/sensor-type-filter.png?raw=true)
+
+You can sort the data at the table by clicking on either Type column title or TimeStamp column title:
+
+![Sort by sensor type or time](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/sort-by-type-or-time.png?raw=true)
+
+There is a bar at the bottom of the table that provides a pagination for the table.
+
+### Box's sensors `/boxes/{boxId}/sensors`
+
+This page displays all sensors located in the particular box.
+
+![Box sensors](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/box-sensors.png?raw=true)
+
+From here you can you can navigate to sensor's readings page `/boxes/{boxId}/sensors/{sensorId}/readings` by clicking on the table rows.
+
+### Box sensor's readings `/boxes/{boxId}/sensors/${sensorId}/readings`
+
+This page displays all readings from the particular sensor in the box.
+
+![Box sensor readings](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/box-sensor-readings.png?raw=true)
+
+This is a good place for plotting the graphic of readings changes during the time period.
