@@ -1,4 +1,4 @@
-export interface SensorInfo {
+export interface BoxReadingInfo {
 	id: string; // UUID for this sensor reading
 	type: string; // type of the sensor
 	name: string; // type of data read by sensor

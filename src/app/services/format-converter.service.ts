@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BoxInfo } from '../models/box.model';
 import { SensorReading } from '../models/sensor-reading.model';
-import { SensorInfo } from '../models/sensor.model';
+import { BoxReadingInfo } from '../models/box-reading.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class FormatConverterService {
 		return readings.reduce((acc, reading) => {
 			const existingIndex = acc.findIndex(el => el.id === reading.box_id);
 			if (existingIndex >= 0) {
-				acc[existingIndex].sensorsQuantity += 1;
+				acc[existingIndex].readingsQuantity += 1;
 			} else {
 				acc.push({
 					id: reading.box_id,
 					longitude: reading.longitude,
 					latitude: reading.latitude,
-					sensorsQuantity: 1
+					readingsQuantity: 1
 				});
 			}
 
@@ -28,7 +28,7 @@ export class FormatConverterService {
 		}, [] as BoxInfo[]);
 	}
 
-	public getSensorsInBox(readings: SensorReading[], boxId: string): SensorInfo[] {
+	public getBoxReadings(readings: SensorReading[], boxId: string): BoxReadingInfo[] {
 		return readings
 			.filter(({ box_id }) => box_id === boxId)
 			.map(({id, name, sensor_type, range_l, range_u, reading, unit, reading_ts}) => ({

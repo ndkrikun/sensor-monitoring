@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sensors-table.component';
+import { BoxReadingsTableComponent } from './components/box-readings-table/box-readings-table.component';
 import { BoxesTableComponent } from './components/boxes-table/boxes-table.component';
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
 		component: BoxesTableComponent
 	},
 	{
-		path: 'boxes/:id/sensors',
-		component: BoxSensorsTableComponent
+		path: 'boxes/:id/readings',
+		component: BoxReadingsTableComponent
 	},
 	{
 		path: '**',

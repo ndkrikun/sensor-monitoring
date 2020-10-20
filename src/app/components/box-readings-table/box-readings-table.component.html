@@ -1,4 +1,17 @@
-<div>
+<mat-toolbar>
+    <span>All readings from {{ boxId }}</span>
+</mat-toolbar>
+
+<div class="filter-container">
+    <mat-form-field appearance="fill">
+        <mat-label>Sensor Type</mat-label>
+        <mat-select (selectionChange)="changeSelectedSensorType($event)" value="ALL">
+            <mat-option *ngFor="let type of (availableSensorTypes$ | async)" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<ng-container>
     <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> Sensor ID </th>
@@ -34,5 +47,7 @@
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
     </table>
 
-    <mat-paginator></mat-paginator>
-</div>
+    <div class="paginator-container">
+        <mat-paginator class="paginator" pageSize="25" showFirstLastButtons></mat-paginator>
+    </div>
+</ng-container>

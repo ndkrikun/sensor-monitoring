@@ -1,3 +1,8 @@
+<mat-toolbar>
+    <span>Boxes list</span>
+    <span class="spacer"></span>
+    <button mat-raised-button (click)="openBoxesMap()">Boxes map</button>
+</mat-toolbar>
 <table mat-table [dataSource]="boxes$ | async">
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Box ID </th>
@@ -11,9 +16,9 @@
         </td>
     </ng-container>
 
-    <ng-container matColumnDef="sensorsQuantity">
-        <th mat-header-cell *matHeaderCellDef> Sensors </th>
-        <td mat-cell *matCellDef="let element"> {{element.sensorsQuantity}} </td>
+    <ng-container matColumnDef="readingsQuantity">
+        <th mat-header-cell *matHeaderCellDef> Readings number </th>
+        <td mat-cell *matCellDef="let element"> {{element.readingsQuantity}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>

@@ -16,10 +16,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BoxesTableComponent } from './components/boxes-table/boxes-table.component';
-import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sensors-table.component';
+import { BoxReadingsTableComponent } from './components/box-readings-table/box-readings-table.component';
+import { MapPopupComponent } from './components/map-popup/map-popup.component';
 
 
 
@@ -27,7 +31,8 @@ import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sen
 	declarations: [
 		AppComponent,
 		BoxesTableComponent,
-		BoxSensorsTableComponent
+		BoxReadingsTableComponent,
+		MapPopupComponent
 	],
 	imports: [
 		BrowserModule,
@@ -41,6 +46,9 @@ import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sen
 		MatProgressSpinnerModule,
 		MatButtonModule,
 		MatInputModule,
+		MatSelectModule,
+		MatDialogModule,
+		FormsModule,
 		StoreModule.forRoot<AppState>({
 			sensorReadings: sensorReadingsReducer
 		}),

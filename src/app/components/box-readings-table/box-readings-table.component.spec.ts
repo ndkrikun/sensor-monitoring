@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoxSensorsTableComponent } from './box-sensors-table.component';
+import { BoxReadingsTableComponent } from './box-readings-table.component';
 
-describe('BoxSensorsTableComponent', () => {
-  let component: BoxSensorsTableComponent;
-  let fixture: ComponentFixture<BoxSensorsTableComponent>;
+describe('BoxReadingsTableComponent', () => {
+  let component: BoxReadingsTableComponent;
+  let fixture: ComponentFixture<BoxReadingsTableComponent>;
 
   beforeEach(async () => {
 	await TestBed.configureTestingModule({
-	  declarations: [ BoxSensorsTableComponent ]
+	  declarations: [ BoxReadingsTableComponent ]
 	})
 	.compileComponents();
   });
 
   beforeEach(() => {
-	fixture = TestBed.createComponent(BoxSensorsTableComponent);
+	fixture = TestBed.createComponent(BoxReadingsTableComponent);
 	component = fixture.componentInstance;
 	fixture.detectChanges();
   });
