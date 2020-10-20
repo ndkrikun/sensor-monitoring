@@ -8,20 +8,17 @@ interface DialogData {
 }
 
 @Component({
-  selector: 'app-map-popup',
-  templateUrl: './map-popup.component.html',
-  styleUrls: ['./map-popup.component.sass']
+  selector: 'app-boxes-map',
+  templateUrl: './boxes-map.component.html',
+  styleUrls: ['./boxes-map.component.sass']
 })
-export class MapPopupComponent implements AfterViewInit, OnDestroy {
+export class BoxesMapComponent implements AfterViewInit {
 	constructor(
-		public dialogRef: MatDialogRef<MapPopupComponent>,
+		public dialogRef: MatDialogRef<BoxesMapComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: DialogData
 	) { }
 
 	@ViewChild('map') private readonly mapElement: any;
-
-	public ngOnDestroy(): void {
-	}
 
 	public ngAfterViewInit(): void {
 		const center = new google.maps.LatLng(this.data.boxes[0].latitude, this.data.boxes[0].longitude);
@@ -36,9 +33,5 @@ export class MapPopupComponent implements AfterViewInit, OnDestroy {
 				title: id
 			}).setMap(map);
 		});
-	}
-
-	public closePopup(): void {
-		this.dialogRef.close(false);
 	}
 }

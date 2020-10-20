@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 import { AppState } from 'src/app/app.state';
 import { BoxInfo } from 'src/app/models/box.model';
 import { FormatConverterService } from 'src/app/services/format-converter.service';
-import { MapPopupComponent } from '../map-popup/map-popup.component';
+import { BoxesMapComponent } from '../boxes-map/boxes-map.component';
 
 @Component({
   selector: 'app-boxes-table',
@@ -33,7 +33,7 @@ export class BoxesTableComponent {
 
 	public openBoxesMap(): void {
 		this.boxes$.pipe(take(1)).subscribe(payload => {
-			this.dialog.open(MapPopupComponent, { width: '600px', data: { boxes: payload } });
+			this.dialog.open(BoxesMapComponent, { width: '600px', data: { boxes: payload } });
 		});
 	}
 

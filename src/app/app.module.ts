@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BoxesTableComponent } from './components/boxes-table/boxes-table.component';
 import { BoxReadingsTableComponent } from './components/box-readings-table/box-readings-table.component';
-import { MapPopupComponent } from './components/map-popup/map-popup.component';
+import { BoxesMapComponent } from './components/boxes-map/boxes-map.component';
 
 
 
@@ -32,7 +32,7 @@ import { MapPopupComponent } from './components/map-popup/map-popup.component';
 		AppComponent,
 		BoxesTableComponent,
 		BoxReadingsTableComponent,
-		MapPopupComponent
+		BoxesMapComponent
 	],
 	imports: [
 		BrowserModule,
