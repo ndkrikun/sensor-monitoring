@@ -1,44 +1,38 @@
-<table mat-table [dataSource]="boxSensors$ | async">
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Sensor id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+<div>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Sensor ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
-    </ng-container>
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="lowerRange">
-        <th mat-header-cell *matHeaderCellDef> Lower Range </th>
-        <td mat-cell *matCellDef="let element"> {{element.lowerRange}} </td>
-    </ng-container>
+        <ng-container matColumnDef="range">
+            <th mat-header-cell *matHeaderCellDef> Range </th>
+            <td mat-cell *matCellDef="let element"> {{element.lowerRange}} — {{element.upperRange}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="upperRange">
-        <th mat-header-cell *matHeaderCellDef> Upper Range </th>
-        <td mat-cell *matCellDef="let element"> {{element.upperRange}} </td>
-    </ng-container>
+        <ng-container matColumnDef="reading">
+            <th mat-header-cell *matHeaderCellDef> Reading </th>
+            <td mat-cell *matCellDef="let element"> {{element.reading}} {{element.unit}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="reading">
-        <th mat-header-cell *matHeaderCellDef> Reading </th>
-        <td mat-cell *matCellDef="let element"> {{element.reading}} </td>
-    </ng-container>
+        <ng-container matColumnDef="readingTimeStamp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> TimeStamp </th>
+            <td mat-cell *matCellDef="let element"> {{element.readingTimeStamp | date}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="unit">
-        <th mat-header-cell *matHeaderCellDef> Unit </th>
-        <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
-    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
 
-    <ng-container matColumnDef="readingTimeStamp">
-        <th mat-header-cell *matHeaderCellDef> TimeStamp </th>
-        <td mat-cell *matCellDef="let element"> {{element.readingTimeStamp}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-</table>
+    <mat-paginator></mat-paginator>
+</div>

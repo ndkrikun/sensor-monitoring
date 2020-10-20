@@ -7,8 +7,11 @@ import { AppState } from './app.state';
 import { sensorReadingsReducer } from './reducers/sensor-readings/sensor-readings.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,26 +24,29 @@ import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sen
 
 
 @NgModule({
-  declarations: [
-	AppComponent,
-	BoxesTableComponent,
-	BoxSensorsTableComponent
-  ],
-  imports: [
-	BrowserModule,
-	AppRoutingModule,
-	HttpClientModule,
-	MatTableModule,
-	MatToolbarModule,
-	MatProgressSpinnerModule,
-	MatButtonModule,
-	MatInputModule,
-	StoreModule.forRoot<AppState>({
-		sensorReadings: sensorReadingsReducer
-	}),
-	StoreDevtoolsModule.instrument()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		BoxesTableComponent,
+		BoxSensorsTableComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatToolbarModule,
+		MatProgressSpinnerModule,
+		MatButtonModule,
+		MatInputModule,
+		StoreModule.forRoot<AppState>({
+			sensorReadings: sensorReadingsReducer
+		}),
+		StoreDevtoolsModule.instrument()
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
