@@ -1,0 +1,22 @@
+<mat-toolbar>
+	<span>{{ boxId }} sensors </span>
+</mat-toolbar>
+<table mat-table [dataSource]="boxSensors$ | async">
+	<ng-container matColumnDef="type">
+		<th mat-header-cell *matHeaderCellDef> Type </th>
+		<td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+	</ng-container>
+
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef> Name </th>
+		<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+	</ng-container>
+
+	<ng-container matColumnDef="range">
+		<th mat-header-cell *matHeaderCellDef> Range </th>
+		<td mat-cell *matCellDef="let element"> {{element.lowerRange}} — {{element.upperRange}} </td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="columns"></tr>
+	<tr mat-row *matRowDef="let row; columns: columns;" (click)="goToSensorReadingsList(row.id)"></tr>
+</table>

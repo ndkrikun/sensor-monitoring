@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { SensorReading } from '../models/sensor-reading.model';
+import { ResponseSensorReading } from '../models/response-sensor-reading.model';
 import { take } from 'rxjs/operators';
 import { ResponseBuilderService } from './response-builder.service';
 
@@ -17,7 +17,7 @@ export class RequestService {
 		private readonly responseBuilder: ResponseBuilderService
 	) { }
 
-	public async getSensorReadings(): Promise<SensorReading[]> {
+	public async getSensorReadings(): Promise<ResponseSensorReading[]> {
 		return new Promise(resolve => {
 			this.http.get<string>(this.routes.GET_ALL_READINGS).pipe(take(1)).subscribe(
 				payload => resolve(this.responseBuilder.prepareSensorReadings(payload)),

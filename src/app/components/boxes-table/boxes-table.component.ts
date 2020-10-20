@@ -18,7 +18,7 @@ export class BoxesTableComponent {
 		({sensorReadings: {readings}}) => this.formatConverter.getAllBoxes(readings)
 	);
 
-	public readonly columns = ['id', 'coordinates', 'readingsQuantity'];
+	public readonly columns = ['id', 'coordinates', 'readingsQuantity', 'buttons'];
 
 	constructor(
 		private readonly store: Store<AppState>,
@@ -27,8 +27,15 @@ export class BoxesTableComponent {
 		private readonly dialog: MatDialog,
 	) { }
 
-	public goToSensorsList(id: string): void {
+	public goToAllReadingsList(event: Event, id: string): void {
+		console.log(event, id);
+		event.stopPropagation();
 		this.router.navigateByUrl(`boxes/${id}/readings`);
+	}
+
+	public goToSensorsList(event: Event, id: string): void {
+		event.stopPropagation();
+		this.router.navigateByUrl(`boxes/${id}/sensors`);
 	}
 
 	public openBoxesMap(): void {

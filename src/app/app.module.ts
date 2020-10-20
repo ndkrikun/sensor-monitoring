@@ -24,6 +24,8 @@ import { AppComponent } from './app.component';
 import { BoxesTableComponent } from './components/boxes-table/boxes-table.component';
 import { BoxReadingsTableComponent } from './components/box-readings-table/box-readings-table.component';
 import { BoxesMapComponent } from './components/boxes-map/boxes-map.component';
+import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sensors-table.component';
+import { SensorReadingsTableComponent } from './components/sensor-readings-table/sensor-readings-table.component';
 
 
 
@@ -32,7 +34,9 @@ import { BoxesMapComponent } from './components/boxes-map/boxes-map.component';
 		AppComponent,
 		BoxesTableComponent,
 		BoxReadingsTableComponent,
-		BoxesMapComponent
+		BoxesMapComponent,
+		BoxSensorsTableComponent,
+		SensorReadingsTableComponent
 	],
 	imports: [
 		BrowserModule,

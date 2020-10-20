@@ -17,7 +17,7 @@ import { FormatConverterService } from 'src/app/services/format-converter.servic
   styleUrls: ['./box-readings-table.component.sass']
 })
 export class BoxReadingsTableComponent implements OnInit, OnDestroy, AfterViewInit {
-	public readonly boxId = this.route.snapshot.paramMap.get('id');
+	public readonly boxId = this.route.snapshot.paramMap.get('boxId');
 
 	private readonly boxReadings$ = this.store.select(
 		({sensorReadings: {readings}}) => this.formatConverter.getBoxReadings(readings, this.boxId)

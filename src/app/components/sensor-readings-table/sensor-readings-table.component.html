@@ -1,0 +1,25 @@
+<mat-toolbar>
+	<span>{{ sensorId }} sensor readings </span>
+	<span class="spacer"></span>
+</mat-toolbar>
+
+<section class="mat-typography sensor-info">
+	<p><strong>Type:</strong> {{ (sensor$ | async).type }}</p>
+	<p><strong>Name:</strong> {{ (sensor$ | async).name }}</p>
+	<p><strong>Range:</strong> {{ (sensor$ | async).lowerRange}} — {{ (sensor$ | async).upperRange}}</p>
+</section>
+
+<table mat-table [dataSource]="(sensor$ | async).readings">
+	<ng-container matColumnDef="reading">
+		<th mat-header-cell *matHeaderCellDef> Reading </th>
+		<td mat-cell *matCellDef="let element"> {{element.reading}} {{element.unit}} </td>
+	</ng-container>
+	
+	<ng-container matColumnDef="readingTimeStamp">
+		<th mat-header-cell *matHeaderCellDef> Time Stamp </th>
+		<td mat-cell *matCellDef="let element"> {{element.readingTimeStamp }} </td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="columns"></tr>
+	<tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>

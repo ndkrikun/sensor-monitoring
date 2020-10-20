@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BoxReadingsTableComponent } from './components/box-readings-table/box-readings-table.component';
+import { BoxSensorsTableComponent } from './components/box-sensors-table/box-sensors-table.component';
 import { BoxesTableComponent } from './components/boxes-table/boxes-table.component';
+import { SensorReadingsTableComponent } from './components/sensor-readings-table/sensor-readings-table.component';
 
 const routes: Routes = [
 	{
@@ -9,8 +11,16 @@ const routes: Routes = [
 		component: BoxesTableComponent
 	},
 	{
-		path: 'boxes/:id/readings',
+		path: 'boxes/:boxId/readings',
 		component: BoxReadingsTableComponent
+	},
+	{
+		path: 'boxes/:boxId/sensors',
+		component: BoxSensorsTableComponent
+	},
+	{
+		path: 'boxes/:boxId/sensors/:sensorId/readings',
+		component: SensorReadingsTableComponent
 	},
 	{
 		path: '**',
