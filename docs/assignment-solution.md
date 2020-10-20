@@ -45,11 +45,11 @@ I structured reducers directory in the most comfortable way for a possible futur
 
 - Write a CI script and deploy the app on github pages
 
-### How to run the project
+## How to run the project
 
 You will need Angular CLI version `Angular CLI: v10.1.7` and `Node: v12.16.3` to run this project.
 
-#### Steps
+Steps:
 
 - Make sure you have the right Node.js version
 - `npm install -g @angular/cli@10.0.7`
@@ -59,7 +59,7 @@ You will need Angular CLI version `Angular CLI: v10.1.7` and `Node: v12.16.3` to
 
 ## Functionality overview
 
-### The main page `/boxes`
+### 1. The main page `/boxes`
 
 The main page displays all of the boxes deployed on the field. You can observe their unique ids and the number of available readings for each box.
 
@@ -71,7 +71,7 @@ Also you can click on the button and observe all boxes locations on the map:
 
 ![Boxes map](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/boxes-map.png?raw=true)
 
-### Box's readings `/boxes/{boxId}/readings`
+### 2. Box's readings `/boxes/{boxId}/readings`
 
 This page displays all readings made by all sensors for the particular box.
 
@@ -87,7 +87,7 @@ You can sort the data at the table by clicking on either Type column title or Ti
 
 There is a bar at the bottom of the table that provides a pagination for the table.
 
-### Box's sensors `/boxes/{boxId}/sensors`
+### 3. Box's sensors `/boxes/{boxId}/sensors`
 
 This page displays all sensors located in the particular box.
 
@@ -95,7 +95,7 @@ This page displays all sensors located in the particular box.
 
 From here you can you can navigate to sensor's readings page `/boxes/{boxId}/sensors/{sensorId}/readings` by clicking on the table rows.
 
-### Box sensor's readings `/boxes/{boxId}/sensors/${sensorId}/readings`
+### 4. Box sensor's readings `/boxes/{boxId}/sensors/${sensorId}/readings`
 
 This page displays all readings from the particular sensor in the box.
 
