@@ -12,7 +12,7 @@
 
 ### Frameworks and libraries
 
-`Angular CLI` provides a great number of instruments from code generation commands to testing, deployment etc. It provides powerful instruments to design your app. While your application is growing, you may divide its part by modules. Moreover, Angular.js is maid and maintained by Google, that ensures stable versions releases and high standards.
+`Angular CLI` provides a great number of instruments from code generation commands to testing, deployment etc. It provides powerful instruments to design your app. While your application is growing, you may divide its part by modules. Moreover, Angular.js is made and maintained by Google, that ensures stable versions releases and high standards.
 
 I decided to use `ngrx` store for managing data in my app. It's the best choice from the list of state management frameworks, as it's written specifically for Angular applications. Also, it's based on Redux pattern and RxJS library, and makes app's state immutable.
 
