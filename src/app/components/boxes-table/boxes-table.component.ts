@@ -37,7 +37,6 @@ export class BoxesTableComponent {
 	 * Navigates to the all readings list
 	 */
 	public goToAllReadingsList(event: Event, id: string): void {
-		console.log(event, id);
 		event.stopPropagation();
 		this.router.navigateByUrl(`boxes/${id}/readings`);
 	}
