@@ -10,6 +10,9 @@ import { RequestService } from './services/request.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+	/**
+	 * All sensor readings from the store
+	 */
 	public readonly sensorReadings$ = this.store.select(({sensorReadings: {readings}}) => readings);
 
 	constructor(
@@ -17,6 +20,9 @@ export class AppComponent implements OnInit {
 		private readonly store: Store<AppState>
 	) {}
 
+	/**
+	 * Life cycle hook
+	 */
 	public async ngOnInit(): Promise<void> {
 		const readings = await this.request.getSensorReadings();
 		this.store.dispatch(new UpdateAllReadingsReducer(readings));

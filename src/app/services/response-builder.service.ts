@@ -5,9 +5,9 @@ import { ResponseSensorReading } from '../models/response-sensor-reading.model';
   providedIn: 'root'
 })
 export class ResponseBuilderService {
-
-	constructor() { }
-
+	/**
+	 * Creates a valid response data from the raw response
+	 */
 	public prepareSensorReadings(data: string): ResponseSensorReading[] {
 		return data
 			.split('\n')

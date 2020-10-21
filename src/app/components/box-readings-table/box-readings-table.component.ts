@@ -17,22 +17,46 @@ import { FormatConverterService } from 'src/app/services/format-converter.servic
   styleUrls: ['./box-readings-table.component.sass']
 })
 export class BoxReadingsTableComponent implements OnInit, OnDestroy, AfterViewInit {
+	/**
+	 * Box id from the route
+	 */
 	public readonly boxId = this.route.snapshot.paramMap.get('boxId');
 
+	/**
+	 * All readings from the current box
+	 */
 	private readonly boxReadings$ = this.store.select(
 		({sensorReadings: {readings}}) => this.formatConverter.getBoxReadings(readings, this.boxId)
 	);
 
+	/**
+	 * All columns from the table
+	 */
 	public columns = ['id', 'type', 'name', 'range', 'reading', 'readingTimeStamp'];
 
+	/**
+	 * Data required for the material table component
+	 */
 	public readonly dataSource = new MatTableDataSource<BoxReadingInfo>([]);
 
+	/**
+	 * An array of all subscriptions in this component
+	 */
 	private readonly subscriptions = new Array<Subscription>();
 
+	/**
+	 * Table paginator element
+	 */
 	@ViewChild(MatPaginator) private readonly paginator: MatPaginator;
 
+	/**
+	 * Table sort element
+	 */
 	@ViewChild(MatSort) private readonly sort: MatSort;
 
+	/**
+	 * All available sensor types
+	 */
 	public availableSensorTypes$ = this.boxReadings$.pipe(
 		map(sensors => ['ALL'].concat(sensors
 			.filter(({ type }, index, array) => array.findIndex(el => el.type === type) === index)
@@ -46,6 +70,9 @@ export class BoxReadingsTableComponent implements OnInit, OnDestroy, AfterViewIn
 		private readonly formatConverter: FormatConverterService
 	) { }
 
+	/**
+	 * Event handler for sensor type selection changes
+	 */
 	public changeSelectedSensorType(event: MatSelectChange): void {
 		this.boxReadings$.pipe(
 			take(1)
@@ -56,6 +83,9 @@ export class BoxReadingsTableComponent implements OnInit, OnDestroy, AfterViewIn
 		);
 	}
 
+	/**
+	 * Life cycle hook
+	 */
 	public ngOnInit(): void {
 		this.subscriptions.push(
 			this.boxReadings$.subscribe(payload => {
@@ -64,10 +94,16 @@ export class BoxReadingsTableComponent implements OnInit, OnDestroy, AfterViewIn
 		);
 	}
 
+	/**
+	 * Life cycle hook
+	 */
 	public ngOnDestroy(): void {
 		this.subscriptions.forEach(sub => sub.unsubscribe());
 	}
 
+	/**
+	 * Life cycle hook
+	 */
 	public ngAfterViewInit(): void {
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

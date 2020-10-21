@@ -67,7 +67,7 @@ The main page displays all of the boxes deployed on the field. You can observe t
 
 From here you can you can navigate either to readings table `/boxes/{boxId}/readings` or sensors table `/boxes/{boxId}/sensors` available for each box.
 
-Also you can click on the button and observe all boxes locations on the map:
+Also you can click on the "Boxes map" button and observe all boxes locations on the map:
 
 ![Boxes map](https://github.com/ndkrikun/sensor-monitoring/blob/master/docs/images/boxes-map.png?raw=true)
 

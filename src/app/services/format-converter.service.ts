@@ -8,9 +8,9 @@ import { SensorInfo, SensorReadingsInfo } from '../models/sensor.model';
   providedIn: 'root'
 })
 export class FormatConverterService {
-
-	constructor() { }
-
+	/**
+	 * Returns all available boxes info
+	 */
 	public getAllBoxes(readings: ResponseSensorReading[]): BoxInfo[] {
 		return readings.reduce((acc, reading) => {
 			const existingIndex = acc.findIndex(el => el.id === reading.box_id);
@@ -29,6 +29,9 @@ export class FormatConverterService {
 		}, [] as BoxInfo[]);
 	}
 
+	/**
+	 * Returns all readings info from the box
+	 */
 	public getBoxReadings(readings: ResponseSensorReading[], boxId: string): BoxReadingInfo[] {
 		return readings
 			.filter(({ box_id }) => box_id === boxId)
@@ -44,6 +47,9 @@ export class FormatConverterService {
 			}));
 	}
 
+	/**
+	 * Returns all available sensors from the box
+	 */
 	public getBoxSensors(readings: ResponseSensorReading[], boxId: string): SensorInfo[] {
 		return readings.filter(({ box_id }) => box_id === boxId).reduce((acc, reading) => {
 			return acc.some(el => el.id === reading.id) ? acc : acc.concat({
@@ -56,6 +62,9 @@ export class FormatConverterService {
 		}, [] as SensorInfo[]);
 	}
 
+	/**
+	 * Returns readings information from the sensor
+	 */
 	public getSensorReadings(readings: ResponseSensorReading[], boxId: string, sensorId: string): SensorReadingsInfo {
 		const items = readings.filter((reading) => reading.box_id === boxId && reading.id === sensorId);
 		const { id, sensor_type, name, range_l, range_u } = items[0];

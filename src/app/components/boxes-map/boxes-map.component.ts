@@ -13,13 +13,19 @@ interface DialogData {
   styleUrls: ['./boxes-map.component.sass']
 })
 export class BoxesMapComponent implements AfterViewInit {
+	/**
+	 * Map element
+	 */
+	@ViewChild('map') private readonly mapElement: any;
+
 	constructor(
 		public dialogRef: MatDialogRef<BoxesMapComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: DialogData
 	) { }
 
-	@ViewChild('map') private readonly mapElement: any;
-
+	/**
+	 * Life cycle hook
+	 */
 	public ngAfterViewInit(): void {
 		const center = new google.maps.LatLng(this.data.boxes[0].latitude, this.data.boxes[0].longitude);
 		const mapOptions = { zoom: 4, center };

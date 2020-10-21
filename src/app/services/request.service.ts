@@ -8,15 +8,21 @@ import { ResponseBuilderService } from './response-builder.service';
   providedIn: 'root'
 })
 export class RequestService {
-	private readonly routes = {
+	/**
+	 * The list of all available request routes
+	 */
+	private readonly routes = Object.freeze({
 		GET_ALL_READINGS: '/assets/data/sensor_readings.json'
-	};
+	});
 
 	constructor(
 		private readonly http: HttpClient,
 		private readonly responseBuilder: ResponseBuilderService
 	) { }
 
+	/**
+	 * Fetches all sensor readings
+	 */
 	public async getSensorReadings(): Promise<ResponseSensorReading[]> {
 		return new Promise(resolve => {
 			this.http.get<string>(this.routes.GET_ALL_READINGS).pipe(take(1)).subscribe(

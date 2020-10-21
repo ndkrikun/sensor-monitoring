@@ -10,12 +10,21 @@ import { FormatConverterService } from 'src/app/services/format-converter.servic
   styleUrls: ['./box-sensors-table.component.sass']
 })
 export class BoxSensorsTableComponent {
+	/**
+	 * Box id from the route
+	 */
 	public readonly boxId = this.route.snapshot.paramMap.get('boxId');
 
+	/**
+	 * All sensors from the current box
+	 */
 	public readonly boxSensors$ = this.store.select(
 		({sensorReadings: {readings}}) => this.formatConverter.getBoxSensors(readings, this.boxId)
 	);
 
+	/**
+	 * All columns from the table
+	 */
 	public columns = ['type', 'name', 'range'];
 
 	constructor(
@@ -25,6 +34,9 @@ export class BoxSensorsTableComponent {
 		private readonly route: ActivatedRoute,
 	) { }
 
+	/**
+	 * Navigates to the sensor readings list
+	 */
 	public goToSensorReadingsList(sensorId: string): void {
 		this.router.navigateByUrl(`boxes/${this.boxId}/sensors/${sensorId}/readings`);
 	}
