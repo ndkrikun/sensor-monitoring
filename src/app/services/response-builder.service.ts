@@ -9,11 +9,16 @@ export class ResponseBuilderService {
 	 * Creates a valid response data from the raw response
 	 */
 	public prepareSensorReadings(data: string): ResponseSensorReading[] {
-		return data
-			.split('\n')
-			.reduce(
-				(acc, el) => !!el ? acc.concat(JSON.parse(el)) : acc,
-				[] as ResponseSensorReading[]
-			);
+		try {
+			return data
+				.split('\n')
+				.reduce(
+					(acc, el) => !!el ? acc.concat(JSON.parse(el)) : acc,
+					[] as ResponseSensorReading[]
+				);
+		} catch (error) {
+			console.error(error);
+			return [];
+		}
 	}
 }
